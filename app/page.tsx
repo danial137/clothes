@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="p-10">
       <h2> persian clothes website</h2>
-      <Button variant="destructive">Demo Button</Button>
+      <Button variant="default">Demo Button</Button>
     </div>
   );
 }

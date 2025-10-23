@@ -1,8 +1,17 @@
-import React from 'react'
+import HeaderMenu from "./HeaderMenu"
+import Logo from "./Logo"
+
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div>
+
+      <HeaderMenu />
+      <Logo />
+      <div>
+        right
+      </div>
+    </div>
   )
 }
 
