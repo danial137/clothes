@@ -40,8 +40,8 @@ const socialLink = [
 const SocialMedia = ({ className, iconClassName, tooltipClassName }: Props) => {
     return <TooltipProvider>
         <div className={cn('flex items-center gap-3.5', className)}>
-            {socialLink?.map((item) => (
-                <Tooltip>
+            {socialLink?.map((item, index) => (
+                <Tooltip key={item?.href || index}>
                     <TooltipTrigger asChild>
                         <Link href={item?.href} target='_blank' rel='noopener noroferrer' className={cn('p-2 border rounded-full hover:text-white  hover:border-white hoverEffect', iconClassName)}>
                             {item?.icon}
