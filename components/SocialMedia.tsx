@@ -43,12 +43,12 @@ const SocialMedia = ({ className, iconClassName, tooltipClassName }: Props) => {
             {socialLink?.map((item) => (
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Link href={item.href}>
-                            {item.icon}
+                        <Link href={item?.href} target='_blank' rel='noopener noroferrer' className={cn('p-2 border rounded-full hover:text-white  hover:border-white hoverEffect', iconClassName)}>
+                            {item?.icon}
                         </Link>
                     </TooltipTrigger>
                     <TooltipContent className={cn('bg-white text-darkColor font-semibold', tooltipClassName)}>
-                        {item.title}
+                        {item?.title}
                     </TooltipContent>
                 </Tooltip>
             ))}
