@@ -5,9 +5,9 @@ import { productType } from "@/constants";
 import { client } from "@/sanity/lib/client";
 import { Product } from "@/sanity.types";
 import ProductCart from "./ProductCart";
-// import NoProductsAvailable from "./NoProductsAvailable";
 import { motion, AnimatePresence } from "motion/react";
 import { Loader2 } from "lucide-react";
+import NoProductsAvailable from "./NoProductsAvailable";
 
 const ProductGrid = () => {
     const [selectedTab, setSelectedTab] = useState(productType[0]?.title || "");
@@ -58,10 +58,8 @@ const ProductGrid = () => {
                             ))}
                         </div>
                     ) : (
-                        // <NoProductsAvailable selectedTab={selectedTab} />
-                        <div>
-                            hi
-                        </div>
+                        <NoProductsAvailable selectedTab={selectedTab} />
+
                     )}
                 </>
             )}
