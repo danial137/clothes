@@ -1,44 +1,72 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import HomeTbbar from './HomeTbbar'
-import { productType } from '@/constants'
-import { client } from '@/sanity/lib/client'
+"use client";
+import React, { useEffect, useState } from "react";
+import HomeTbbar from "./HomeTbbar";
+import { productType } from "@/constants";
+import { client } from "@/sanity/lib/client";
+import { Product } from "@/sanity.types";
+import ProductCart from "./ProductCart";
+// import NoProductsAvailable from "./NoProductsAvailable";
+import { motion, AnimatePresence } from "motion/react";
+import { Loader2 } from "lucide-react";
 
 const ProductGrid = () => {
-    const [selectdTab, setSelectedTab] = useState(productType[0]?.title || "")
-
-    const [products, setProduct] = useState([]);
-
-    const [loading, setLoading] = useState(false)
-
-    const query = `*[_type == "product" && variant == $variant] | order(name asc)`;
-
-    const Params = { variant: selectdTab.toLocaleLowerCase() };
-
+    const [selectedTab, setSelectedTab] = useState(productType[0]?.title || "");
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const query = `*[_type == 'product' && variant ==$variant] | order(name asc)`;
+    const params = { variant: selectedTab.toLocaleLowerCase() };
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true)
+            setLoading(true);
             try {
-                const response = await client.fetch(query, Params)
-                setProduct(await response)
+                const response = await client.fetch(query, params);
+                setProducts(await response);
             } catch (error) {
-                console.log('Product Fetching Error', error)
+                console.log("Product fetching Error", error);
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
         };
-
         fetchData();
-    }, [selectdTab])
+    }, [selectedTab]);
 
     return (
-        <div className='mt-10 flex flex-col items-center'>
-            <HomeTbbar selectedTab={selectdTab} onTabSelect={setSelectedTab} />
-            {loading ? <div><span>Procut is loading...</span></div> : products?.map((item) => (
-                <p>{item?.name}</p>
-            ))}
+        <div className="mt-10 flex flex-col items-center">
+            <HomeTbbar selectedTab={selectedTab} onTabSelect={setSelectedTab} />
+            {loading ? (
+                <div className="flex flex-col items-center justify-center py-10 min-h-80 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10">
+                    <div className="flex items-center space-x-2 text-blue-600">
+                        <Loader2 className="animate-spin" />
+                        <span className="text-lg font-semibold">Product is loading...</span>
+                    </div>
+                </div>
+            ) : (
+                <>
+                    {products?.length ? (
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10 w-full">
+                            {products?.map((product: Product) => (
+                                <AnimatePresence key={product?._id}>
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0.2 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                    >
+                                        <ProductCart product={product} />
+                                    </motion.div>
+                                </AnimatePresence>
+                            ))}
+                        </div>
+                    ) : (
+                        // <NoProductsAvailable selectedTab={selectedTab} />
+                        <div>
+                            hi
+                        </div>
+                    )}
+                </>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default ProductGrid
+export default ProductGrid;
