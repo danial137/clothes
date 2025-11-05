@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import PriceView from "./PriceView";
-// import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductCart = ({ product }: { product: Product }) => {
     return (
@@ -22,6 +22,7 @@ const ProductCart = ({ product }: { product: Product }) => {
                         />
                     </Link>
                 )}
+              
                 {product?.stock === 0 && (
                     <div className="absolute top-0 left-0 w-full h-full bg-darkColor/50 flex items-center justify-center">
                         <p className="text-xl text-white font-semibold text-center">
@@ -38,7 +39,7 @@ const ProductCart = ({ product }: { product: Product }) => {
                     price={product?.price}
                     discount={product?.discount}
                 />
-                {/* <AddToCartButton product={product} /> */}
+                <AddToCartButton product={product} />
             </div>
         </div>
     );
