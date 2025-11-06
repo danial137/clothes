@@ -18,11 +18,6 @@ const data: Props[] = [{
     icon: (<Phone className='text-gray-600 group-hover:text-darkColor transition-colors' />),
 },
 {
-    title: 'Visit Us',
-    subtitle: 'New Orlean, USA',
-    icon: (<MapPin className='text-gray-600 group-hover:text-darkColor transition-colors' />),
-},
-{
     title: 'Working Hours',
     subtitle: 'Sat - Fri:10:00 AM - 7:00 PM',
     icon: (<MapPin className='text-gray-600 group-hover:text-darkColor transition-colors' />),
@@ -39,7 +34,13 @@ const FooterTop = () => {
 }
 
 const ContactItem = ({ icon, title, subtitle }: Props) => {
-    return <div className='flex items-center gap-3 group hover:bg-gray-50 p-4 transition-colors'>test</div>
+    return <div className='flex items-center gap-3 group hover:bg-gray-50 p-4 transition-colors'>
+        {icon}
+        <div className='font-semibold'>
+            <h3>{title}</h3>
+            <h3>{subtitle}</h3>
+        </div>
+    </div>
 }
 
 export default FooterTop

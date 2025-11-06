@@ -13,12 +13,12 @@ const QuantityButton = ({ product, className }: Props) => {
     const itemCount = 4;
 
     return (
-        <div className={cn('flex items-center gap-1 text-base pb-1',className)}>
-            <Button  variant="outline" size="icon" className='w-6 h-6'>
+        <div className={cn('flex items-center gap-1 text-base pb-1', className)}>
+            <Button variant="outline" size="icon" className='w-6 h-6'>
                 <Minus />
             </Button>
             <span className='font-semibold w-8 text-center text-darkColor'>{itemCount}</span>
-            <Button disabled={itemCount} variant="outline" size="icon" className='w-6 h-6'><Plus /></Button>
+            <Button disabled={!itemCount} variant="outline" size="icon" className='w-6 h-6'><Plus /></Button>
         </div>
     )
 }
