@@ -4,6 +4,8 @@ import FooterTop from './FooterTop'
 import Logo from './Logo'
 import SocialMedia from './SocialMedia'
 import { Input } from './ui/input'
+import { categoriesData, quickLinksData } from '@/constants'
+import Link from 'next/link'
 
 
 const Footer = () => {
@@ -17,14 +19,34 @@ const Footer = () => {
             <p className='text-gray-600 text-sm mb-4'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos id et maxime similique culpa odio repudiandae</p>
             <SocialMedia className='text-darkColor/60' iconClassName='border-darkColor/60 hover:border-darkColor hover:text-darkColor' tooltipClassName='bg-darkColor text-white' />
           </div>
-          <div></div>
-          <div></div>
+          <div>
+            <h3 className='font-semibold text-darkColor mb-4'>Quick Links</h3>
+            <div className='flex flex-col gap-3'>
+              {quickLinksData?.map((item) => (
+                <Link key={item.title} href={item.href} className='text-gray-600 hover:text-darkColor text-sm font-medium hoverEffect'>
+                  {item?.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div>
+              <h3 className='font-semibold text-darkColor mb-4'>Categories</h3>
+              <div className='flex flex-col gap-3'>
+                {categoriesData?.map((item) => (
+                  <Link key={item.title} href={`/category=${item?.href}`} className='text-gray-600 hover:text-darkColor text-sm font-medium hoverEffect'>
+                    {item?.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
           <div>
             <h3 className='font-semibold text-darkColor mb-4'>NewsLetters</h3>
-            <p>Subcribe to our NewsLetters to recive update and exclusive</p>
-            <form>
+            <p className='text-gray-600 text-sm mb-4'>Subcribe to our NewsLetters to recive update and exclusive</p>
+            <form className='space-y-3'>
               <Input type="email" placeholder='Enter your email' required className='w-full px-6 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200' />
-              <button type='submit' className='w-full bg-gray-900'>Subscribe</button>
+              <button type='submit' className='w-full bg-darkColor text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors'>Subscribe</button>
             </form>
           </div>
         </div>
