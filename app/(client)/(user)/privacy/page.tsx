@@ -1,9 +1,12 @@
+import Container from '@/components/Container'
 import React from 'react'
 
-const page = () => {
+const PrivacyPage = () => {
   return (
-    <div>page</div>
+    <Container>
+      Privacy Page
+    </Container>
   )
 }
 
-export default page
+export default PrivacyPage

@@ -1,9 +1,12 @@
+import Container from '@/components/Container'
 import React from 'react'
 
-const page = () => {
+const ContactPage = () => {
   return (
-    <div>page</div>
+    <Container>
+      Contact Page
+    </Container>
   )
 }
 
-export default page
+export default ContactPage

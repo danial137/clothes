@@ -1,9 +1,12 @@
+import Container from '@/components/Container'
 import React from 'react'
 
-const page = () => {
+const FaqsPage = () => {
   return (
-    <div>page</div>
+    <Container>
+      Terms Page
+    </Container>
   )
 }
 
-export default page
+export default FaqsPage
