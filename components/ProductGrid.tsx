@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import HomeTbbar from "./HomeTbbar";
 import { productType } from "@/constants";
 import { client } from "@/sanity/lib/client";
 import { Product } from "@/sanity.types";
-import ProductCart from "./ProductCart";
+import NoProductsAvailable from "./NoProductsAvailable";
 import { motion, AnimatePresence } from "motion/react";
 import { Loader2 } from "lucide-react";
-import NoProductsAvailable from "./NoProductsAvailable";
+import HomeTbbar from "./HomeTbbar";
+import ProductCart from "./ProductCart";
 
 const ProductGrid = () => {
     const [selectedTab, setSelectedTab] = useState(productType[0]?.title || "");
@@ -59,7 +59,6 @@ const ProductGrid = () => {
                         </div>
                     ) : (
                         <NoProductsAvailable selectedTab={selectedTab} />
-
                     )}
                 </>
             )}
