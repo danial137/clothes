@@ -1,11 +1,14 @@
 import { Search } from 'lucide-react'
 import React from 'react'
+import { Dialog, DialogTrigger } from './ui/dialog'
 
 const SearchBar = () => {
     return (
-        <div>
-            <Search className='w-5 h-5 hover:text-darkColor hoverEffect' />
-        </div>
+        <Dialog>
+            <DialogTrigger>
+                <Search className='w-5 h-5 hover:text-darkColor hoverEffect' />
+            </DialogTrigger>
+        </Dialog>
     )
 }
 
