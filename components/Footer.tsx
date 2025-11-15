@@ -16,7 +16,7 @@ const Footer = () => {
         <div className='py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 '>
           <div className='space-y-4'>
             <Logo className='text-gray-600 text-sm'>Tulos</Logo>
-            <p className='text-gray-600 text-sm mb-4'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos id  Designed by <span className='text-darkColor font-semibold'>PERSIAN STORE</span></p>
+            <p className='text-gray-600 text-sm mb-4'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos id   Designed by <span className='text-darkColor font-semibold'>PERSIAN STORE</span></p>
             <SocialMedia className='text-darkColor/60' iconClassName='border-darkColor/60 hover:border-darkColor hover:text-darkColor' tooltipClassName='bg-darkColor text-white' />
           </div>
           <div>
