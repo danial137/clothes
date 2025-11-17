@@ -232,11 +232,36 @@ export type PRODUCT_BY_SLUG_QUERYResult = {
   status?: "hot" | "new" | "sale";
   variant?: "hoodie" | "jacket" | "others" | "pants" | "short" | "tshirt";
 } | null;
+// Variable: CATEGORIES_QUERY
+// Query: *[_type=='category'] | order(name asc)
+export type CATEGORIES_QUERYResult = Array<{
+  _id: string;
+  _type: "category";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"product\" && slug.current == $slug] | order(name asc)[0]": PRODUCT_BY_SLUG_QUERYResult;
+    "*[_type=='category'] | order(name asc) ": CATEGORIES_QUERYResult;
   }
 }
