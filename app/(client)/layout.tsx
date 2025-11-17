@@ -5,6 +5,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import localFont from 'next/font/local'
+import { Toaster } from "sonner";
 
 const raleway = localFont({
   src: '../fonts/Raleway.woff2',
@@ -26,11 +27,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${raleway.variable}antialiased`}
+          className={`${raleway.variable} antialiased`}
         >
           <Header />
           {children}
           <Footer />
+          <Toaster position="bottom-right" style={{ zIndex: 999999 }} />
         </body>
       </html>
     </ClerkProvider>
