@@ -20,10 +20,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import paypalLogo from "@/images/paypalLogo.png";
-// import {
-//   createCheckoutSession,
-//   Metadata,
-// } from "@/actions/createCheckoutSession";
+import {
+  createCheckoutSession,
+  Metadata,
+} from "@/actions/createCheckoutSession";
 import QuantityButtons from "@/components/QuantityButton";
 import { toast } from "sonner";
 
